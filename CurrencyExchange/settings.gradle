@@ -1,3 +1,4 @@
+include ':exchangeview'
 include ':domain'
 include ':data'
 include ':app'
