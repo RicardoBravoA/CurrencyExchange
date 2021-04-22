@@ -7,6 +7,9 @@ import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.rba.currency.exchangeview.databinding.LayoutExchangeViewBinding
+import com.rba.currency.exchangeview.listener.ItemListener
+import com.rba.currency.exchangeview.listener.SwapListener
+import com.rba.currency.exchangeview.model.ChangeModel
 import com.rba.currency.exchangeview.model.ExchangeViewModel
 import com.rba.currency.exchangeview.util.onTextChange
 import com.rba.currency.exchangeview.util.rotate
@@ -28,7 +31,8 @@ class ExchangeView @JvmOverloads constructor(
             generateValue()
         }
 
-    var listener: SwapListener? = null
+    var swapListener: SwapListener? = null
+    var itemListener: ItemListener? = null
 
     init {
         layoutParams = ViewGroup.LayoutParams(
@@ -42,7 +46,7 @@ class ExchangeView @JvmOverloads constructor(
             model?.let {
                 val origin = it.destinationCurrencyValue
                 val destination = it.originCurrencyValue
-                listener?.onSwapClickListener(origin, destination)
+                swapListener?.onSwapClickListener(origin, destination)
 
             } ?: run { throw Exception("Need send parameter to model of type ExchangeViewModel") }
 
@@ -52,6 +56,25 @@ class ExchangeView @JvmOverloads constructor(
         binding.originEditText.onTextChange {
             generateValue()
         }
+
+        binding.originValueTextView.setOnLongClickListener {
+            model?.let {
+                val changeModel =
+                    ChangeModel(it.originCurrencyValue, it.destinationCurrencyValue, true)
+                itemListener?.onPressed(changeModel)
+            }
+            true
+        }
+
+        binding.destinationValueTextView.setOnLongClickListener {
+            model?.let {
+                val changeModel =
+                    ChangeModel(it.originCurrencyValue, it.destinationCurrencyValue, false)
+                itemListener?.onPressed(changeModel)
+            }
+            true
+        }
+
     }
 
     private fun generateValue() {

@@ -4,6 +4,7 @@
     <!-- Strings used for fragments for navigation -->
     <string name="splash_fragment_label">Splash Fragment</string>
     <string name="main_fragment_label">Main Fragment</string>
+    <string name="country_fragment_label">Country Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 

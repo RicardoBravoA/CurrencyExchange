@@ -6,6 +6,6 @@ import com.rba.currency.domain.util.ResultType
 
 interface CountryRepository {
 
-    suspend fun get(): ResultType<List<CountryModel>, ErrorModel>
+    suspend fun get(origin: String): ResultType<List<CountryModel>, ErrorModel>
 
 }

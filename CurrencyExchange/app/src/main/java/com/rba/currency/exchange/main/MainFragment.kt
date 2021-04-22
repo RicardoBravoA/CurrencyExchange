@@ -6,13 +6,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
+import com.rba.currency.exchange.common.SharedViewModel
 import com.rba.currency.exchange.databinding.FragmentMainBinding
 import com.rba.currency.exchange.util.Constant
-import com.rba.currency.exchangeview.SwapListener
+import com.rba.currency.exchangeview.listener.ItemListener
+import com.rba.currency.exchangeview.listener.SwapListener
+import com.rba.currency.exchangeview.model.ChangeModel
 
-class MainFragment : Fragment(), SwapListener {
+class MainFragment : Fragment(), SwapListener, ItemListener {
 
     private var binding: FragmentMainBinding? = null
     private val mainViewModel: MainViewModel by lazy {
@@ -20,6 +25,7 @@ class MainFragment : Fragment(), SwapListener {
             MainViewModel::class.java
         )
     }
+    private val sharedViewModel: SharedViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,7 +66,13 @@ class MainFragment : Fragment(), SwapListener {
             }
         })
 
-        binding?.exchangeView?.listener = this
+        sharedViewModel.update.observe(viewLifecycleOwner, {
+            Log.i("z- changeModel", it.toString())
+            mainViewModel.getExchange(it.origin, it.destination)
+        })
+
+        binding?.exchangeView?.swapListener = this
+        binding?.exchangeView?.itemListener = this
 
         return binding?.root
     }
@@ -72,6 +84,14 @@ class MainFragment : Fragment(), SwapListener {
 
     override fun onSwapClickListener(origin: String, destination: String) {
         mainViewModel.getExchange(origin, destination)
+    }
+
+    override fun onPressed(model: ChangeModel) {
+        findNavController().navigate(
+            MainFragmentDirections.actionMainFragmentToCountryFragment(
+                model
+            )
+        )
     }
 
 }
