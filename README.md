@@ -56,7 +56,9 @@ The project tiene las siguientes funcionalidades.
 
 - Se creó un backend simple usando express, para simular las respuestas de los web services
 
-- Por el poco tiempo me hubeira gustado obtener la url del backend desde el archivo `local.properties` del usuario
+- Por el poco tiempo me hubiera gustado obtener la url del backend desde el archivo `local.properties` del usuario
+
+- Se hizo solo un test para `CountryDataSource` del módulo data
 
 ## License
 
