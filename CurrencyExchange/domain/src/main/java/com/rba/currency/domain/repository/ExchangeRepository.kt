@@ -1,4 +1,4 @@
-package com.rba.currency.data.repository
+package com.rba.currency.domain.repository
 
 import com.rba.currency.domain.model.ErrorModel
 import com.rba.currency.domain.model.ExchangeModel
