@@ -9,7 +9,11 @@ object ExchangeMapper {
         return ExchangeModel(
             exchangeResponse.buy,
             exchangeResponse.sell,
-            exchangeResponse.multiply
+            exchangeResponse.multiply,
+            exchangeResponse.buyValue,
+            exchangeResponse.sellValue,
+            exchangeResponse.buyCurrency,
+            exchangeResponse.sellCurrency
         )
     }
 
