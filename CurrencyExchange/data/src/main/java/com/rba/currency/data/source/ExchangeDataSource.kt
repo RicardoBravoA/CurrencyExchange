@@ -3,7 +3,7 @@ package com.rba.currency.data.source
 import com.rba.currency.data.mapper.ErrorMapper
 import com.rba.currency.data.mapper.ExchangeMapper
 import com.rba.currency.data.network.ApiManager
-import com.rba.currency.data.repository.ExchangeRepository
+import com.rba.currency.domain.repository.ExchangeRepository
 import com.rba.currency.data.response.ErrorResponse
 import com.rba.currency.data.util.RetrofitErrorUtil
 import com.rba.currency.domain.model.ErrorModel
