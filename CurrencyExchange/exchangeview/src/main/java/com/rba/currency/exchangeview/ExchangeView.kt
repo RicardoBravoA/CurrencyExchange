@@ -8,7 +8,9 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import com.rba.currency.exchangeview.databinding.LayoutExchangeViewBinding
 import com.rba.currency.exchangeview.model.ExchangeViewModel
+import com.rba.currency.exchangeview.util.onTextChange
 import com.rba.currency.exchangeview.util.rotate
+import com.rba.currency.exchangeview.util.toMoney
 import java.lang.Exception
 
 class ExchangeView @JvmOverloads constructor(
@@ -23,6 +25,7 @@ class ExchangeView @JvmOverloads constructor(
             field = value
             binding.originValueTextView.text = value?.originCurrencyName
             binding.destinationValueTextView.text = value?.destinationCurrencyName
+            generateValue()
         }
 
     var listener: SwapListener? = null
@@ -44,6 +47,28 @@ class ExchangeView @JvmOverloads constructor(
             } ?: run { throw Exception("Need send parameter to model of type ExchangeViewModel") }
 
             view.rotate()
+        }
+
+        binding.originEditText.onTextChange {
+            generateValue()
+        }
+    }
+
+    private fun generateValue() {
+        val originValue = binding.originEditText.text.toString()
+        try {
+            model?.let {
+                val value: Float = if (it.multiply) {
+                    originValue.toFloat() * it.buy.toFloat()
+                } else {
+                    originValue.toFloat() / it.buy.toFloat()
+                }
+
+                binding.destinationEditText.setText(value.toMoney())
+            }
+
+        } catch (exception: Exception) {
+            binding.destinationEditText.setText("")
         }
     }
 

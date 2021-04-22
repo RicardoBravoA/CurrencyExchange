@@ -77,6 +77,8 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp_16"
         android:layout_marginBottom="@dimen/dp_8"
+        android:imeOptions="actionSend"
+        android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/destination_value_text_view"
         app:layout_constraintHorizontal_bias="0.5"
