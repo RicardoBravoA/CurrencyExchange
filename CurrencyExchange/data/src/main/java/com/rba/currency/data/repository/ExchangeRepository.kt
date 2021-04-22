@@ -6,6 +6,9 @@ import com.rba.currency.domain.util.ResultType
 
 interface ExchangeRepository {
 
-    suspend fun get(): ResultType<ExchangeModel, ErrorModel>
+    suspend fun get(
+        originCurrency: String,
+        destinationCurrency: String
+    ): ResultType<ExchangeModel, ErrorModel>
 
 }

@@ -5,6 +5,6 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class ErrorResponse(
-    val code: Int,
-    val message: String
+    val code: Int = 100,
+    val message: String = "Default error"
 ) : Parcelable

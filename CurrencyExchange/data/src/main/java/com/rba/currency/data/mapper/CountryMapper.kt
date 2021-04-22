@@ -5,9 +5,9 @@ import com.rba.currency.domain.model.CountryModel
 
 object CountryMapper {
 
-    fun transformResponseToModel(countryResponse: CountryResponse): List<CountryModel> {
+    fun transformResponseToModel(countryResponse: CountryResponse?): List<CountryModel> {
         val list = mutableListOf<CountryModel>()
-        countryResponse.countries.forEach {
+        countryResponse?.countries?.forEach {
             list.add(CountryModel(it.name, it.value, it.currency))
         }
         return list
