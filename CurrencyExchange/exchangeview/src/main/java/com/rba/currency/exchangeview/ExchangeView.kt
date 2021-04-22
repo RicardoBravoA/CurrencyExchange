@@ -48,7 +48,7 @@ class ExchangeView @JvmOverloads constructor(
                 val destination = it.originCurrencyValue
                 swapListener?.onSwapClickListener(origin, destination)
 
-            } ?: run { throw Exception("Need send parameter to model of type ExchangeViewModel") }
+            }
 
             view.rotate()
         }
