@@ -1,4 +1,4 @@
-package com.rba.currency.exchange
+package com.rba.currency.exchange.splash
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import com.rba.currency.exchange.R
 import com.rba.currency.exchange.databinding.FragmentSplashBinding
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope

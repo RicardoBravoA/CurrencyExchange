@@ -1,5 +1,6 @@
 package com.rba.currency.data.network
 
+import com.rba.currency.data.BuildConfig
 import com.rba.currency.data.util.Constant
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -17,9 +18,9 @@ object ApiManager {
             val logging = HttpLoggingInterceptor()
             logging.level = HttpLoggingInterceptor.Level.NONE
 
-            /*if (BuildConfig.DEBUG) {
+            if (BuildConfig.DEBUG) {
                 logging.level = HttpLoggingInterceptor.Level.BODY
-            }*/
+            }
 
             val okHttpClient = OkHttpClient.Builder()
                 .addInterceptor(logging)

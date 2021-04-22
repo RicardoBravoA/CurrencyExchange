@@ -7,5 +7,9 @@ import kotlinx.parcelize.Parcelize
 data class ExchangeResponse(
     val buy: Double,
     val sell: Double,
-    val multiply: Boolean
+    val multiply: Boolean,
+    val buyValue: String,
+    val sellValue: String,
+    val buyCurrency: String,
+    val sellCurrency: String
 ) : Parcelable
