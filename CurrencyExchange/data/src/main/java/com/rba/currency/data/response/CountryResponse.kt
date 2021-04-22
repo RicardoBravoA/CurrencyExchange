@@ -10,7 +10,8 @@ data class CountryResponse(
     @Parcelize
     data class Country(
         val name: String,
+        val info: String,
+        val image: String,
         val value: String,
-        val currency: String,
     ) : Parcelable
 }

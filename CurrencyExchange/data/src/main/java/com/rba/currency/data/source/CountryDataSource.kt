@@ -17,10 +17,10 @@ class CountryDataSource(
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : CountryRepository {
 
-    override suspend fun get(): ResultType<List<CountryModel>, ErrorModel> {
+    override suspend fun get(origin: String): ResultType<List<CountryModel>, ErrorModel> {
         return withContext(dispatcher) {
             try {
-                val response = ApiManager.get().country()
+                val response = ApiManager.get().country(origin)
                 if (response.isSuccessful) {
                     val data = response.body()
                     ResultType.Success(CountryMapper.transformResponseToModel(data))

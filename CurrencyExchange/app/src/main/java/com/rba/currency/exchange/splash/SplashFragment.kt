@@ -25,7 +25,7 @@ class SplashFragment : Fragment() {
 
         GlobalScope.launch(Dispatchers.Main) {
             delay(DELAY)
-            findNavController().navigate(R.id.action_SplashFragment_to_MainFragment)
+            findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToMainFragment())
         }
 
         return binding?.root

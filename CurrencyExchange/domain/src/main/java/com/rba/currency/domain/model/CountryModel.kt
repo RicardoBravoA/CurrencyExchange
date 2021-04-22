@@ -6,6 +6,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class CountryModel(
     val name: String,
-    val value: String,
-    val currency: String,
+    val info: String,
+    val image: String,
+    val value: String
 ) : Parcelable

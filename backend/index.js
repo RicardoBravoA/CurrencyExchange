@@ -63,10 +63,54 @@ app.get('/api/exchange/:originCurrency/:destinationCurrency', function(req, res)
 
 });
 
-app.get('/api/country', function(req, res) {
+app.get('/api/country/:origin', function(req, res) {
 
-    res.status(200).json({countries: [{name: "Peru", value: "PEN", currency: "Soles"}, 
-        {name: "United States", value: "USD", currency: "Dollars"}, 
-        {name: "European Union", value: "EUR",currency: "Euros"}]})
+    var origin = req.params.origin;
+    const flagEurope = "https://cdn.pixabay.com/photo/2013/07/13/01/09/european-union-155207_960_720.png"
+    const flagPeru = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Flag_of_Peru.svg/200px-Flag_of_Peru.svg.png"
+    const flagUSA = "https://www.lifeder.com/wp-content/uploads/2018/11/bandera-1795-1818.png"
+
+    if(origin === "PEN"){
+        res.status(200).json({countries: 
+        [
+            {name: "Peru", info: "1 PEN = 1 PEN", image: flagPeru, value: "PEN"}, 
+            {name: "United States", info: "1 PEN = 0.27 USD", image: flagUSA, value: "USD"}, 
+            {name: "European Union", info: "1 PEN = 0.22 EUR", image: flagEurope, value: "EUR"}
+        ]})
+    }
+
+    if(origin === "USD"){
+        res.status(200).json({countries: 
+        [
+            {name: "Peru", info: "1 USD = 3.70 PEN", image: flagPeru, value: "PEN"}, 
+            {name: "United States", info: "1 USD = 1 USD", image: flagUSA, value: "USD"}, 
+            {name: "European Union", info: "1 USD = 0.83 EUR", image: flagEurope, value: "EUR"}
+        ]})
+    }
+
+    if(origin === "EUR"){
+        res.status(200).json({countries: 
+        [
+            {name: "Peru", info: "1 EUR = 4.46 PEN", image: flagPeru, value: "PEN"}, 
+            {name: "United States", info: "1 EUR = 1.21 USD", image: flagUSA, value: "USD"}, 
+            {name: "European Union", info: "1 EUR = 1 EUR", image: flagEurope, value: "EUR"}
+        ]})
+    }
+
+    if(origin != "PEN" && origin != "USD" && origin !=  "EUR"){
+        res.status(500).json({code:100, message: "Origin currency not found"});
+    }
     
 });
+
+
+
+
+
+
+
+
+
+
+
+

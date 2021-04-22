@@ -1,4 +1,4 @@
-package com.rba.currency.exchangeview
+package com.rba.currency.exchangeview.listener
 
 interface SwapListener {
 

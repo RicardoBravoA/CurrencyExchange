@@ -8,8 +8,8 @@ import retrofit2.http.Path
 
 interface ApiInterface {
 
-    @GET("country")
-    suspend fun country(): Response<CountryResponse>
+    @GET("country/{origin}")
+    suspend fun country(@Path("origin") origin: String): Response<CountryResponse>
 
     @GET("exchange/{originCurrency}/{destinationCurrency}")
     suspend fun exchange(

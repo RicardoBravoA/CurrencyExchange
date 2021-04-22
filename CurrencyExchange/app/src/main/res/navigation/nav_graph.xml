@@ -23,5 +23,17 @@
         android:label="@string/main_fragment_label"
         tools:layout="@layout/fragment_main">
 
+        <action
+            android:id="@+id/action_MainFragment_to_CountryFragment"
+            app:destination="@id/CountryFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/CountryFragment"
+        android:name="com.rba.currency.exchange.country.CountryFragment"
+        android:label="@string/country_fragment_label"
+        tools:layout="@layout/fragment_country">
+        <argument
+            android:name="model"
+            app:argType="com.rba.currency.exchangeview.model.ChangeModel" />
     </fragment>
 </navigation>

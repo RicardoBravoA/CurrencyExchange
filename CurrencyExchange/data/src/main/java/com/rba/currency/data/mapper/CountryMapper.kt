@@ -8,7 +8,7 @@ object CountryMapper {
     fun transformResponseToModel(countryResponse: CountryResponse?): List<CountryModel> {
         val list = mutableListOf<CountryModel>()
         countryResponse?.countries?.forEach {
-            list.add(CountryModel(it.name, it.value, it.currency))
+            list.add(CountryModel(it.name, it.info, it.image, it.value))
         }
         return list
     }
