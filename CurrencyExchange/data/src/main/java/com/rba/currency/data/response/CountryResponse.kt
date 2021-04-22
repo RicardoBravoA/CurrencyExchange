@@ -5,7 +5,12 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class CountryResponse(
-    val name: String,
-    val value: String,
-    val currency: String,
-) : Parcelable
+    val countries: List<Country>
+) : Parcelable {
+    @Parcelize
+    data class Country(
+        val name: String,
+        val value: String,
+        val currency: String,
+    ) : Parcelable
+}
