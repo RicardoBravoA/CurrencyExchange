@@ -1,0 +1,4 @@
+<resources>
+    <string name="send">You send:</string>
+    <string name="get">You get:</string>
+</resources>
